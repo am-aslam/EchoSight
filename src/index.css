@@ -285,15 +285,33 @@ h6 {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .section-full {
-    flex-direction: column !important;
-    /* Force column on mobile */
-    padding: 3rem 1.5rem;
-    gap: 3rem;
-    text-align: left !important;
+
+  /* Grid Responsiveness */
+  .features-grid,
+  .independence-grid,
+  .tech-cards-grid,
+  .advantages-grid,
+  .join-us-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
-  /* Override specific layouts */
+  .market-content .stat-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  /* Section Content Alignment */
+  .section-full {
+    flex-direction: column !important;
+    padding: 4rem 1.5rem !important;
+    gap: 2rem !important;
+    height: auto !important;
+    min-height: auto !important;
+    text-align: center !important;
+  }
+
+  /* Force all layouts to center on mobile */
   .section-left,
   .section-right,
   .section-center,
@@ -302,11 +320,68 @@ h6 {
     text-align: center !important;
   }
 
-  .section-hero {
-    justify-content: center;
-    padding-top: 6rem;
+  .content-wrapper,
+  .visual-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
   }
 
+  .visual-wrapper {
+    order: -1;
+    /* Move images above text on mobile for better flow */
+    margin-bottom: 2rem;
+  }
+
+  /* Typography */
+  .section-headline {
+    font-size: 2.25rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text {
+    font-size: 1rem !important;
+    padding: 0 1rem;
+  }
+
+  /* Capabilities & Cards */
+  .feature-card,
+  .tech-card,
+  .advantage-card {
+    padding: 1.5rem !important;
+    text-align: left;
+  }
+
+  /* Platform Specifics */
+  .design-content div {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Market Stats */
+  .market-content>div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    width: 100%;
+    margin-left: 0 !important;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+
+  .join-us div:nth-child(3) {
+    flex-direction: column !important;
+  }
+
+  /* Restore missing navbar styles */
   .nav-links {
     display: none;
   }
@@ -322,37 +397,6 @@ h6 {
   .navbar {
     padding: 1rem 1.5rem;
     justify-content: space-between;
-  }
-
-  .section-headline {
-    font-size: 2.5rem;
-  }
-
-  .section-subtitle {
-    font-size: 1.1rem;
-  }
-
-  .hero-text {
-    font-size: 1rem !important;
-  }
-
-  .comparison-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .tech-box {
-    height: auto !important;
-  }
-
-  .hardware-viewer-container {
-    height: 350px;
-  }
-
-  .btn-primary {
-    width: 100%;
-    justify-content: center;
-    font-size: 1rem !important;
-    padding: 1rem !important;
   }
 
   /* Contact Terminal Responsive */

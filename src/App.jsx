@@ -197,9 +197,9 @@ function App() {
             { title: "No Surgery Required", desc: "Completely non-invasive. Start immediately without medical procedures or recovery time." },
             { title: "All-in-One Platform", desc: "Integrates vision, hearing, and communication into a single, elegant wearable." },
             { title: "Modular Ecosystem", desc: "Upgrade components without replacing the entire system, creating long-term value." },
-            { title: "AI-First Design", desc: "Built from the ground up for AI, optimized for machine learning and future capabilities." }
+            { title: "AI-First Design", desc: "Built from the ground up for AI, not a retrofit of existing glasses. Our architecture is optimized for machine learning workloads and future AI capabilities." }
           ].map((item, i) => (
-            <div key={i} style={{ padding: '2rem', border: '1px solid #222', position: 'relative', overflow: 'hidden' }}>
+            <div key={i} className="advantage-card" style={{ padding: '2rem', border: '1px solid #222', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '4px', background: 'var(--color-primary)' }}></div>
               <h5 style={{ marginBottom: '0.75rem', fontSize: '1.1rem' }}>{item.title}</h5>
               <p style={{ fontSize: '0.85rem', color: 'var(--color-text-dim)', lineHeight: '1.5' }}>{item.desc}</p>
@@ -218,7 +218,7 @@ function App() {
       headline: "A Large, Growing Market",
       content: (
         <div className="market-content">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'center', marginBottom: '3rem' }}>
+          <div className="stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', textAlign: 'center', marginBottom: '3rem' }}>
             {[
               { val: "285M+", label: "Visually Impaired", sub: "Global population requiring vision assistance" },
               { val: "430M+", label: "Hearing Impaired", sub: "Worldwide users facing barriers" },
@@ -248,7 +248,7 @@ function App() {
           <p style={{ marginBottom: '2.5rem', color: 'var(--color-text-dim)' }}>
             EchoSight is a vision for a world where technology empowers everyone. We're seeking strategic partners who share our commitment.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div className="join-us-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
               { icon: <TrendingUp />, title: "Investment", desc: "Join a high-growth deep-tech startup addressing an $8B+ market" },
               { icon: <Target />, title: "Partnerships", desc: "Collaborate on healthcare, enterprise, and global distribution" },
