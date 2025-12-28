@@ -359,11 +359,13 @@ h6 {
 
   .advantages-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
+    gap: 1rem !important;
   }
 
-  .advantage-card::before {
-    width: 3px;
+  .advantages-footer {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+    padding-top: 1rem;
   }
 
   .advantage-card h5 {
@@ -934,4 +936,337 @@ h6 {
     width: 40px;
     height: 40px;
   }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  padding: 3rem 2rem;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 50px rgba(238, 252, 84, 0.1);
+  animation: modalSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Blasting Animation */
+.blast-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(238, 252, 84, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  pointer-events: none;
+}
+
+.blast-core {
+  width: 10px;
+  height: 10px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: blastOut 1s ease-out forwards;
+}
+
+.blast-text {
+  position: absolute;
+  color: var(--color-primary);
+  font-family: var(--font-tech);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+  opacity: 0;
+  animation: blastTextReveal 1.5s ease-out forwards;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes blastOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(50);
+    opacity: 0.5;
+    box-shadow: 0 0 100px var(--color-primary);
+  }
+
+  100% {
+    transform: scale(100);
+    opacity: 0;
+  }
+}
+
+@keyframes blastTextReveal {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    letter-spacing: 0;
+  }
+
+  30% {
+    transform: scale(1.1);
+    opacity: 1;
+    letter-spacing: 1rem;
+  }
+
+  80% {
+    transform: scale(1);
+    opacity: 1;
+    letter-spacing: 0.5rem;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Generate 12 particle animations */
+.p0 {
+  animation: p0move 1s ease-out forwards;
+}
+
+.p1 {
+  animation: p1move 1s ease-out forwards;
+}
+
+.p2 {
+  animation: p2move 1s ease-out forwards;
+}
+
+.p3 {
+  animation: p3move 1s ease-out forwards;
+}
+
+.p4 {
+  animation: p4move 1s ease-out forwards;
+}
+
+.p5 {
+  animation: p5move 1s ease-out forwards;
+}
+
+.p6 {
+  animation: p6move 1s ease-out forwards;
+}
+
+.p7 {
+  animation: p7move 1s ease-out forwards;
+}
+
+.p8 {
+  animation: p8move 1s ease-out forwards;
+}
+
+.p9 {
+  animation: p9move 1s ease-out forwards;
+}
+
+.p10 {
+  animation: p10move 1s ease-out forwards;
+}
+
+.p11 {
+  animation: p11move 1s ease-out forwards;
+}
+
+@keyframes p0move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(100px, -150px);
+    opacity: 0;
+  }
+}
+
+@keyframes p1move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-150px, -100px);
+    opacity: 0;
+  }
+}
+
+@keyframes p2move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(150px, 100px);
+    opacity: 0;
+  }
+}
+
+@keyframes p3move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-100px, 150px);
+    opacity: 0;
+  }
+}
+
+@keyframes p4move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(50px, -200px);
+    opacity: 0;
+  }
+}
+
+@keyframes p5move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-200px, 50px);
+    opacity: 0;
+  }
+}
+
+@keyframes p6move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(200px, -50px);
+    opacity: 0;
+  }
+}
+
+@keyframes p7move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50px, 200px);
+    opacity: 0;
+  }
+}
+
+@keyframes p8move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(120px, 120px);
+    opacity: 0;
+  }
+}
+
+@keyframes p9move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-120px, -120px);
+    opacity: 0;
+  }
+}
+
+@keyframes p10move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(120px, -120px);
+    opacity: 0;
+  }
+}
+
+@keyframes p11move {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-120px, 120px);
+    opacity: 0;
+  }
+}
+
+.advantages-footer {
+  width: 100%;
 }

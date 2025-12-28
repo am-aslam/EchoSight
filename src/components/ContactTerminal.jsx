@@ -7,32 +7,40 @@ const ContactTerminal = () => {
     const [message, setMessage] = useState('');
     const [logs, setLogs] = useState([]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email || !message) return;
 
         setStatus('sending');
+        setLogs(["Initializing secure uplink...", "Encrypting data packets..."]);
 
-        // Simulate connection log
-        const newLogs = [
-            "Establishing secure handshake...",
-            "Encrypting payload...",
-            "Routing through neural proxy...",
-            "Packet deliver: 100%"
-        ];
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/aslamsadiquev.work@gmail.com", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    message: message,
+                    _subject: "New Contact from EchoSight Website"
+                })
+            });
 
-        let i = 0;
-        const interval = setInterval(() => {
-            setLogs(prev => [...prev, newLogs[i]]);
-            i++;
-            if (i >= newLogs.length) {
-                clearInterval(interval);
+            if (response.ok) {
+                setLogs(prev => [...prev, "Routing through neural proxy...", "Packet delivered: 100%"]);
                 setTimeout(() => {
                     setStatus('success');
                     setLogs([]);
-                }, 500);
+                }, 1000);
+            } else {
+                throw new Error("Transmission failed");
             }
-        }, 600);
+        } catch (error) {
+            setLogs(prev => [...prev, "ERROR: Uplink interrupted", "Retrying connection..."]);
+            setTimeout(() => setStatus('idle'), 2000);
+        }
     };
 
     if (status === 'success') {

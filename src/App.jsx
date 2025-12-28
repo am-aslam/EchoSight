@@ -14,6 +14,9 @@ function App() {
   const [scrollY, setScrollY] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  const [isPitchModalOpen, setIsPitchModalOpen] = useState(false);
+  const [showBlast, setShowBlast] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -28,6 +31,14 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNotify = () => {
+    setShowBlast(true);
+    setTimeout(() => {
+      setShowBlast(false);
+      setIsPitchModalOpen(false);
+    }, 1500);
+  };
 
   const sections = [
     {
@@ -204,9 +215,11 @@ function App() {
               <p>{item.desc}</p>
             </div>
           ))}
-          <p style={{ gridColumn: 'span 2', fontSize: '0.9rem', color: 'var(--color-text-dim)', marginTop: '1rem', textAlign: 'center' }}>
-            Our modular approach creates a sustainable competitive moat through ecosystem lock-in and continuous innovation.
-          </p>
+          <div className="advantages-footer" style={{ marginTop: '1rem', textAlign: 'center' }}>
+            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-dim)' }}>
+              Our modular approach creates a sustainable competitive moat through ecosystem lock-in and continuous innovation.
+            </p>
+          </div>
         </div>
       ),
       align: "center"
@@ -250,7 +263,7 @@ function App() {
           <div className="join-us-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '3rem' }}>
             {[
               { icon: <TrendingUp />, title: "Investment", desc: "Join a high-growth deep-tech startup addressing an $8B+ market" },
-              { icon: <Target />, title: "Partnerships", desc: "Collaborate on healthcare, enterprise, and global distribution" },
+              { icon: <Target />, title: "Partnerships", desc: "Collaborate on healthcare, integration, and global distribution" },
               { icon: <Award />, title: "Shared Vision", desc: "Build the future of accessibility with a mission-driven team" }
             ].map((item, i) => (
               <div key={i} style={{ padding: '1.5rem', background: '#111', border: '1px solid #222', textAlign: 'left' }}>
@@ -260,9 +273,15 @@ function App() {
               </div>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="#contact-form" className="btn-primary" style={{ background: 'var(--color-primary)', color: '#000' }}>Schedule a Meeting</a>
-            <a href="#" className="btn-primary" style={{ border: '1px solid #444', color: '#fff' }}>Download Pitch Deck</a>
+            <button
+              onClick={() => setIsPitchModalOpen(true)}
+              className="btn-primary"
+              style={{ border: '1px solid #444', color: '#fff', background: 'transparent' }}
+            >
+              Download Pitch Deck
+            </button>
           </div>
           <div id="contact-form" style={{ marginTop: '5rem' }}>
             <ContactTerminal />
@@ -276,6 +295,34 @@ function App() {
 
   return (
     <div className="App">
+      {/* Blasting Animation Overlay */}
+      {showBlast && (
+        <div className="blast-overlay">
+          <div className="blast-core"></div>
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className={`particle p${i}`}></div>
+          ))}
+          <div className="blast-text">NOTIFICATION READY</div>
+        </div>
+      )}
+
+      {/* Pitch Modal */}
+      {isPitchModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3 style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>Pitch Deck Status</h3>
+            <p style={{ marginBottom: '2rem', color: 'var(--color-text-dim)' }}>The pitch is on way. We are finalizing the latest details for you.</p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <button onClick={handleNotify} className="btn-primary" style={{ background: 'var(--color-primary)', color: '#000', padding: '0.5rem 1.5rem' }}>
+                Notify me
+              </button>
+              <button onClick={() => setIsPitchModalOpen(false)} className="btn-primary" style={{ border: '1px solid #444', color: '#fff', padding: '0.5rem 1.5rem', background: 'transparent' }}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="scroll-progress-container">
         <div className="scroll-progress-bar" style={{ width: `${scrollProgress}% ` }}></div>
       </div>
