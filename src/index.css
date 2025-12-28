@@ -353,8 +353,21 @@ h6 {
   .feature-card,
   .tech-card,
   .advantage-card {
-    padding: 1.5rem !important;
-    text-align: left;
+    padding: 2rem 1.5rem !important;
+    text-align: left !important;
+  }
+
+  .advantages-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .advantage-card::before {
+    width: 3px;
+  }
+
+  .advantage-card h5 {
+    font-size: 1.1rem !important;
   }
 
   /* Platform Specifics */
@@ -506,6 +519,53 @@ h6 {
   color: var(--color-primary);
 }
 
+
+/* Competitiveness / Advantages */
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.advantage-card {
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.advantage-card:hover {
+  background: rgba(238, 252, 84, 0.03);
+  border-color: rgba(238, 252, 84, 0.2);
+  transform: translateY(-5px);
+}
+
+.advantage-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+  opacity: 0.8;
+}
+
+.advantage-card h5 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.advantage-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-dim);
+  line-height: 1.6;
+}
 
 /* Contact Terminal */
 .contact-terminal {

@@ -192,17 +192,16 @@ function App() {
       title: "Competitiveness",
       headline: "Why EchoSight Wins",
       content: (
-        <div className="advantages-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+        <div className="advantages-grid">
           {[
             { title: "No Surgery Required", desc: "Completely non-invasive. Start immediately without medical procedures or recovery time." },
             { title: "All-in-One Platform", desc: "Integrates vision, hearing, and communication into a single, elegant wearable." },
             { title: "Modular Ecosystem", desc: "Upgrade components without replacing the entire system, creating long-term value." },
             { title: "AI-First Design", desc: "Built from the ground up for AI, not a retrofit of existing glasses. Our architecture is optimized for machine learning workloads and future AI capabilities." }
           ].map((item, i) => (
-            <div key={i} className="advantage-card" style={{ padding: '2rem', border: '1px solid #222', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '4px', background: 'var(--color-primary)' }}></div>
-              <h5 style={{ marginBottom: '0.75rem', fontSize: '1.1rem' }}>{item.title}</h5>
-              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-dim)', lineHeight: '1.5' }}>{item.desc}</p>
+            <div key={i} className="advantage-card">
+              <h5>{item.title}</h5>
+              <p>{item.desc}</p>
             </div>
           ))}
           <p style={{ gridColumn: 'span 2', fontSize: '0.9rem', color: 'var(--color-text-dim)', marginTop: '1rem', textAlign: 'center' }}>
